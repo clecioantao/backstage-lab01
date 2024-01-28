@@ -63,8 +63,21 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
-  # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers: {}
+  environment: development
+  providers:
+    google:
+      development:
+        clientId: 1092082430835-8on84ql34qpl1u6788okfdl4p4b1epuq.apps.googleusercontent.com
+        clientSecret: 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
+    atlassian:
+      development:
+        clientId: F4vc7LscYnApENbeH1auG4Fawrembi4Z
+        clientSecret: ATOAb4Jo_M9juYjRANVT32sW2SvHBthyRynPN6Zdyo9yxf99csVif0g3iLFkAMz-eDt2135BF523
+        scopes: 'read:jira-user read:jira-work offline_access read:confluence-content.all read:confluence-space.all read:confluence-user read:confluence-props read:account'
+    github:
+      development:
+        clientId: a5c7d5c706e3eb446a35
+        clientSecret: b2596385c6dddbc62f1423fffe4cc2902749ce15
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -83,6 +96,12 @@ catalog:
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Template para documentação
+    - type: file
+      target: ../../templates/docs/template.yaml
       rules:
         - allow: [Template]
 
